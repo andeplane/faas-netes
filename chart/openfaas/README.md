@@ -384,11 +384,13 @@ Additional OpenFaaS options in `values.yaml`.
 | `ingressOperator.replicas` | Replicas of the ingress-operator| `1` |
 | `ingressOperator.image` | Container image used in ingress-operator| `openfaas/ingress-operator:0.4.0` |
 | `ingressOperator.resources` | Limits and requests for memory and CPU usage | Memory Requests: 25Mi |
+| `faasnetes.image` | Container image used in faas-netes | `openfaas/faas-netes:0.10.1` |
 | `faasnetes.readTimeout` | Queue worker read timeout | `60s` |
 | `faasnetes.writeTimeout` | Queue worker write timeout | `60s` |
 | `faasnetes.imagePullPolicy` | Image pull policy for deployed functions | `Always` |
 | `faasnetes.setNonRootUser` | Force all function containers to run with user id `12000` | `false` |
 | `gateway.directFunctions` | Invoke functions directly without using the provider | `true` |
+| `gateway.image` | Container image used in gateway | `openfaas/gateway:0.18.13` |
 | `gateway.replicas` | Replicas of the gateway, pick more than `1` for HA | `1` |
 | `gateway.readTimeout` | Queue worker read timeout | `65s` |
 | `gateway.writeTimeout` | Queue worker write timeout | `65s` |
@@ -398,6 +400,7 @@ Additional OpenFaaS options in `values.yaml`.
 | `gateway.maxIdleConnsPerHost` | Set max idle connections from gateway to functions per host | `1024` |
 | `gateway.logsProviderURL` | Set a custom logs provider url | `""` |
 | `queueWorker.durableQueueSubscriptions` | Whether to use a durable queue subscription | `false` |
+| `queueWorker.image` | Container image used in queue-worker | `openfaas/queue-worker:0.9.0` |
 | `queueWorker.queueGroup` | The name of the queue group used to process asynchronous function invocations | `faas` |
 | `queueWorker.replicas` | Replicas of the queue-worker, pick more than `1` for HA | `1` |
 | `queueWorker.ackWait` | Max duration of any async task/request | `60s` |
@@ -407,7 +410,9 @@ Additional OpenFaaS options in `values.yaml`.
 | `nats.external.host` | The host at which the externally-managed NATS Streaming server can be reached | `""` |
 | `nats.external.port` | The port at which the externally-managed NATS Streaming server can be reached | `""` |
 | `nats.enableMonitoring` | Enable the NATS monitoring endpoints on port `8222` for NATS Streaming deployments managed by this chart | `false` |
+| `nats.image` | Container image used in nats-streaming | `nats-streaming:0.17.0` |
 | `faasIdler.create` | Create the faasIdler component | `true` |
+| `faasIdler.image` | Container image used in faas-idler | `openfaas/faas-idler:0.3.0` |
 | `faasIdler.inactivityDuration` | Duration after which faas-idler will scale function down to 0 | `15m` |
 | `faasIdler.reconcileInterval` | The time between each of reconciliation | `1m` |
 | `faasIdler.dryRun` | When set to false the OpenFaaS API will be called to scale down idle functions, by default this is set to only print in the logs. | `true` |
